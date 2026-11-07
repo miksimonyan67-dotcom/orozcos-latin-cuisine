@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orozco's Latin Cuisine | Luxury Miami & South Florida Catering</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            luxe: {
+              emerald: '#0A1F16',     // Deep Palm Night
+              forest: '#112E22',      // Botanical Velvet
+              sage: '#4D6E5D',        // Soft Eucalyptus
+              mist: '#E6ECE7',        // Pale Celadon Tint
+              alabaster: '#FCFBF8',   // Warm Gallery White
+              ivory: '#F4F1EA',       // Linen Cream
+              champagne: '#C8A252',   // Brushed Champagne Gold
+              goldLight: '#EAD7AB',   // Silk Gold
+              charcoal: '#1A221E'     // Deep Botanical Ink
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Multi-Layer Choreographed Fade-In Effects */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px) scale(0.98);
+      filter: blur(4px);
+      transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.95s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform, filter;
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-44px);
+      filter: blur(4px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(44px);
+      filter: blur(4px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-zoom {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible,
+    .reveal-left.is-visible,
+    .reveal-right.is-visible,
+    .reveal-zoom.is-visible {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+      filter: blur(0);
+    }
+
+    /* Animated Drawing Gold Hairline */
+    .draw-line {
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .is-visible .draw-line,
+    .draw-line.is-visible {
+      width: 100%;
+    }
+
+    /* Luxury Glass & Shimmer Surfaces */
+    .luxe-glass-dark {
+      background: linear-gradient(145deg, rgba(17, 46, 34, 0.85), rgba(10, 31, 22, 0.94));
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(200, 162, 82, 0.32);
+      box-shadow: 0 28px 65px -15px rgba(3, 12, 8, 0.7);
+    }
+
+    .luxe-card-light {
+      background: #FFFFFF;
+      border: 1px solid rgba(77, 110, 93, 0.16);
+      box-shadow: 0 12px 34px -12px rgba(10, 31, 22, 0.08);
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.38s ease;
+    }
+    .luxe-card-light:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200, 162, 82, 0.7);
+      box-shadow: 0 26px 55px -15px rgba(10, 31, 22, 0.16);
+    }
+
+    /* Gold Shimmer Button Sweep */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: skewX(-22deg);
+      transition: left 0.75s ease;
+    }
+    .btn-shimmer:hover::after {
+      left: 140%;
+    }
+
+    /* Ambient Floating Botanical Orbs */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(3deg); }
+    }
+    .animate-float-slow {
+      animation: floatSlow 9s ease-in-out infinite;
+    }
+    .animate-float-delayed {
+      animation: floatSlow 11s ease-in-out 2.5s infinite;
+    }
+
+    /* INFINITE RIGHT-TO-LEFT MARQUEE WITH FEATHERED SIDE FADES */
+    @keyframes marqueeRightToLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-wrapper {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(90deg, #071710 0%, #112E22 18%, #153829 50%, #112E22 82%, #071710 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeRightToLeft 46s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    /* Deep Side Vignettes */
+    .side-shade-dark::before,
+    .side-shade-dark::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 110px;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .side-shade-dark::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(5, 17, 11, 0.78), transparent);
+    }
+    .side-shade-dark::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(5, 17, 11, 0.78), transparent);
+    }
+
+    .side-shade-light::before,
+    .side-shade-light::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 90px;
+      pointer-events: none;
+      z-index: 4;
+    }
+    .side-shade-light::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(230, 236, 231, 0.55), transparent);
+    }
+    .side-shade-light::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(230, 236, 231, 0.55), transparent);
+    }
+
+    /* Subtle Botanical Watermark Pattern */
+    .botanical-grid {
+      background-image:
+        radial-gradient(circle at 18% 22%, rgba(200, 162, 82, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 82% 78%, rgba(77, 110, 93, 0.28) 0%, transparent 52%),
+        radial-gradient(rgba(234, 215, 171, 0.15) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px;
+    }
+
+    /* Top Scroll Progress Indicator */
+    #scroll-progress {
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.1s linear;
+    }
+
+    /* Interactive Image Scroll Stage */
+    .dish-image-stage {
+      position: relative;
+      overflow: hidden;
+      cursor: ns-resize;
+      user-select: none;
+    }
+    .dish-image-stage img {
+      will-change: transform, filter;
+      transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1), filter 0.12s ease-out;
+    }
+
+    .scroll-hint-badge {
+      opacity: 0;
+      transform: translate(-50%, 10px) scale(0.92);
+      transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .dish-image-stage.is-near .scroll-hint-badge,
+    .dish-image-stage:hover .scroll-hint-badge {
+      opacity: 1;
+      transform: translate(-50%, 0) scale(1);
+    }
+
+    @keyframes bounceWheel {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    .wheel-dot {
+      animation: bounceWheel 1.3s infinite ease-in-out;
+    }
+
+    .gold-ornament {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .gold-ornament::before,
+    .gold-ornament::after {
+      content: "";
+      width: 38px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #C8A252, transparent);
+    }
+  </style>
+</head>
+<body class="bg-luxe-alabaster text-luxe-charcoal font-sans antialiased overflow-x-hidden selection:bg-luxe-emerald selection:text-luxe-goldLight">
+
+  <!-- Interactive Champagne & Emerald Scroll Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 h-[3px] z-[60] bg-transparent pointer-events-none">
+    <div id="scroll-progress" class="h-full bg-gradient-to-r from-luxe-sage via-luxe-champagne to-luxe-goldLight shadow-[0_0_12px_rgba(200,162,82,0.8)]"></div>
+  </div>
+
+  <!-- FIRST-TIME VISITOR COOKIE CONSENT GATE MODAL -->
+  <div id="cookie-gate-modal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-500 opacity-0 pointer-events-none">
+    <div class="luxe-glass-dark rounded-3xl p-8 sm:p-10 max-w-xl w-full text-white space-y-6 border border-luxe-champagne/40 shadow-2xl relative">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-full bg-luxe-champagne/20 border border-luxe-champagne text-luxe-champagne flex items-center justify-center text-xl">🍪</span>
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-luxe-champagne block font-semibold">Privacy &amp; Cookie Gate</span>
+          <h3 class="font-display text-2xl font-semibold">Welcome to Our Platform</h3>
+        </div>
+      </div>
+      <p class="text-luxe-mist/90 text-sm leading-relaxed">
+        We require your consent to utilize essential cookies and encrypted storage to remember your preferences and ensure a seamless browsing experience. Please accept or decline below.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+        <button onclick="handleCookieChoice(false)" class="w-full sm:w-1/2 border border-stone-600 hover:border-luxe-champagne text-luxe-mist hover:text-white py-3.5 rounded-xl text-xs uppercase tracking-widest font-semibold transition">
+          Decline Optional
+        </button>
+        <button onclick="handleCookieChoice(true)" class="btn-shimmer w-full sm:w-1/2 bg-gradient-to-r from-luxe-champagne to-luxe-goldLight text-luxe-emerald py-3.5 rounded-xl text-xs uppercase tracking-[0.16em] font-bold shadow-lg">
+          Accept All Cookies
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMS OF SERVICE & GENERAL TABBED MODAL -->
+  <div id="terms-modal" class="fixed inset-0 z-[90] bg-black/75 backdrop-blur-md flex items-center justify-center p-4 transition-opacity duration-300 opacity-0 pointer-events-none">
+    <div class="luxe-glass-dark rounded-3xl p-6 sm:p-10 max-w-2xl w-full text-white space-y-6 border border-luxe-champagne/40 shadow-2xl relative max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between border-b border-luxe-champagne/25 pb-4 shrink-0">
+        <h3 class="font-display text-2xl sm:text-3xl font-semibold text-white">Terms, Policies &amp; General Tab</h3>
+        <button onclick="toggleTermsModal(false)" class="text-luxe-mist hover:text-white text-xl font-bold p-1">✕</button>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="flex flex-wrap gap-2 shrink-0 border-b border-luxe-champagne/15 pb-4">
+        <button onclick="switchTermsTab('terms')" id="tab-btn-terms" class="terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-champagne text-luxe-emerald transition">Terms of Service</button>
+        <button onclick="switchTermsTab('general')" id="tab-btn-general" class="terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-forest/80 text-luxe-mist hover:text-white transition">General Tab</button>
+        <button onclick="switchTermsTab('privacy')" id="tab-btn-privacy" class="terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-forest/80 text-luxe-mist hover:text-white transition">Privacy Policy</button>
+        <button onclick="switchTermsTab('cookies')" id="tab-btn-cookies" class="terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-forest/80 text-luxe-mist hover:text-white transition">Cookie Policy</button>
+      </div>
+
+      <!-- Tab Content Viewer (Generic Editable Placeholders) -->
+      <div id="terms-content-box" class="overflow-y-auto pr-2 space-y-4 text-xs sm:text-sm text-luxe-mist/90 leading-relaxed font-sans shrink">
+        <!-- Dynamically populated via JS -->
+      </div>
+
+      <div class="pt-4 border-t border-luxe-champagne/25 text-right shrink-0">
+        <button onclick="toggleTermsModal(false)" class="bg-white hover:bg-luxe-ivory text-luxe-emerald font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider transition">
+          Close Window
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Live Proposal Pill -->
+  <a href="#quote" id="floating-proposal-pill" class="fixed bottom-16 right-6 z-50 translate-y-24 opacity-0 pointer-events-none transition-all duration-500 bg-luxe-emerald text-white border border-luxe-champagne/60 px-5 py-3.5 rounded-full shadow-2xl flex items-center gap-3 hover:scale-105">
+    <span class="w-2.5 h-2.5 rounded-full bg-luxe-champagne animate-ping"></span>
+    <span class="text-xs uppercase tracking-widest font-semibold text-luxe-goldLight">Proposal Tray</span>
+    <span id="proposal-count-badge" class="bg-luxe-champagne text-luxe-emerald font-bold text-xs px-2.5 py-0.5 rounded-full">0</span>
+  </a>
+
+  <!-- Dopamine Toast Notification -->
+  <div id="toast-banner" class="fixed top-24 right-6 z-50 translate-x-full opacity-0 transition-all duration-500 bg-luxe-forest/95 backdrop-blur-xl text-white border border-luxe-champagne/50 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 max-w-xs">
+    <span class="text-luxe-champagne text-lg">✦</span>
+    <p id="toast-message" class="text-xs font-medium text-luxe-mist"></p>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed w-full z-50 bg-luxe-emerald/90 backdrop-blur-xl text-white border-b border-luxe-champagne/20 transition-all duration-300">
+    <div id="nav-inner" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between transition-all duration-300">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-full border border-luxe-champagne/60 bg-gradient-to-br from-luxe-forest to-luxe-emerald flex items-center justify-center shadow-inner group-hover:border-luxe-goldLight transition">
+          <span class="font-display italic font-bold text-2xl text-luxe-champagne group-hover:scale-110 transition-transform">O</span>
+        </div>
+        <div>
+          <span class="font-display text-2xl font-semibold tracking-[0.14em] block leading-none text-white">OROZCO'S</span>
+          <span class="text-[10px] uppercase tracking-[0.32em] text-luxe-champagne font-medium mt-1 block">Latin Cuisine &amp; Atelier</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-9 text-xs uppercase tracking-[0.18em] font-medium text-luxe-mist/85">
+        <a href="#about" class="hover:text-luxe-champagne transition">The Experience</a>
+        <a href="#curator" class="hover:text-luxe-champagne transition">Event Moods</a>
+        <a href="#menu" class="hover:text-luxe-champagne transition">Signature Menu</a>
+        <a href="#reviews" class="hover:text-luxe-champagne transition">Testimonials</a>
+      </div>
+
+      <a href="#quote" class="btn-shimmer bg-gradient-to-r from-luxe-champagne to-[#DFBC6D] hover:from-[#DFBC6D] hover:to-luxe-goldLight text-luxe-emerald font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-[0.15em] transition shadow-lg shadow-black/25 hover:scale-105 active:scale-95">
+        Reserve Catering
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="relative pt-36 pb-28 lg:pt-44 lg:pb-36 bg-luxe-emerald text-white overflow-hidden side-shade-dark">
+    <div id="hero-pattern" class="absolute inset-0 botanical-grid will-change-transform"></div>
+    <div id="hero-glow" class="absolute -top-32 right-0 w-[36rem] h-[36rem] bg-luxe-champagne/12 rounded-full blur-3xl pointer-events-none will-change-transform"></div>
+    <div class="absolute bottom-20 -left-24 w-[28rem] h-[28rem] bg-emerald-500/10 rounded-full blur-3xl pointer-events-none animate-float-slow"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_48%,rgba(4,14,10,0.72)_100%)] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div id="hero-copy" class="lg:col-span-7 space-y-7 will-change-transform">
+        <div class="reveal inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-luxe-forest/90 border border-luxe-champagne/35 text-luxe-goldLight text-xs font-medium tracking-[0.16em] uppercase">
+          <span class="text-luxe-champagne">✦</span>
+          <span>5.0 Rated • Miami &amp; South Florida Private Catering</span>
+        </div>
+
+        <h1 class="reveal font-display text-5xl sm:text-6xl lg:text-[4.35rem] font-semibold leading-[1.05] tracking-tight text-white" style="transition-delay: 120ms;">
+          Elevated Latin Gastronomy &amp; <span class="italic font-normal text-luxe-champagne">Bespoke</span> Event Artistry
+        </h1>
+
+        <p class="reveal text-luxe-mist/85 text-base sm:text-lg max-w-2xl leading-relaxed font-normal" style="transition-delay: 240ms;" id="hero-summary">
+          Curating unforgettable weddings, private celebrations, and executive gatherings across Miami. Orozco's blends heirloom Latin flavors, live interactive culinary stations, and lush botanical table styling.
+        </p>
+
+        <div class="reveal flex flex-wrap items-center gap-4 pt-1" style="transition-delay: 340ms;">
+          <a href="#menu" class="btn-shimmer bg-white hover:bg-luxe-ivory text-luxe-emerald font-bold px-8 py-4 rounded-full text-xs uppercase tracking-[0.16em] transition shadow-xl hover:scale-105 active:scale-95">
+            Explore Culinary Menu
+          </a>
+          <a href="tel:+19544018518" class="border border-luxe-champagne/45 hover:border-luxe-goldLight bg-luxe-forest/50 hover:bg-luxe-forest/90 text-white px-7 py-4 rounded-full text-xs uppercase tracking-[0.15em] font-semibold transition flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Concierge (954) 401-8518</span>
+          </a>
+        </div>
+
+        <div class="reveal grid grid-cols-3 gap-6 pt-6 border-t border-luxe-champagne/20 max-w-xl" style="transition-delay: 440ms;">
+          <div>
+            <div class="font-display text-3xl sm:text-4xl font-bold text-luxe-champagne"><span class="count-up" data-target="5.0" data-decimals="1">0.0</span>★</div>
+            <div class="text-[11px] uppercase tracking-widest text-luxe-mist/70 mt-1">Guest Satisfaction</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl sm:text-4xl font-bold text-white"><span class="count-up" data-target="100" data-decimals="0">0</span>%</div>
+            <div class="text-[11px] uppercase tracking-widest text-luxe-mist/70 mt-1">On-Time Arrival</div>
+          </div>
+          <div>
+            <div class="font-display text-3xl sm:text-4xl font-bold text-luxe-goldLight"><span class="count-up" data-target="25" data-decimals="0">0</span>+</div>
+            <div class="text-[11px] uppercase tracking-widest text-luxe-mist/70 mt-1">Live Station Toppings</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Profile Card -->
+      <div id="hero-card" class="reveal-right lg:col-span-5 luxe-glass-dark rounded-3xl p-8 space-y-6 will-change-transform relative" style="transition-delay: 280ms;">
+        <div class="flex items-center justify-between border-b border-luxe-champagne/20 pb-4">
+          <div>
+            <span class="text-[10px] uppercase tracking-[0.25em] text-luxe-champagne block">Verified Atelier</span>
+            <h3 class="font-display text-2xl sm:text-3xl text-white font-semibold mt-0.5">House Profile</h3>
+          </div>
+          <div class="text-right">
+            <span class="text-luxe-champagne font-display text-2xl font-bold block leading-none">5.0 ★</span>
+            <span class="text-[11px] text-luxe-mist/70">Miami &amp; Broward</span>
+          </div>
+        </div>
+        <div id="business-quick-info" class="space-y-4 text-sm text-luxe-mist/90"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- INFINITE MARQUEE WITH 10 POETIC QUOTES -->
+  <div class="bg-[#071710] border-y border-luxe-champagne/35 py-4 relative shadow-inner">
+    <div class="marquee-wrapper">
+      <div class="marquee-track text-xs uppercase tracking-[0.32em] text-luxe-goldLight font-medium">
+        <div class="flex items-center gap-14 pr-14">
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Where Extraordinary Flavor Becomes Pure Art”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Elegance Served on Every Silver Platter”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “A Symphony of Taste Crafted for the Senses”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Unrivaled Hospitality, Unforgettable Dining”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Where Every Bite Feels Like a Celebration”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Refined Presentation, Soulful Perfection”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Curated Flavors That Linger in Memory”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Graceful Service &amp; Culinary Mastery”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “The Art of Gathering Around Fine Food”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Pure Gastronomy, Served with Heart &amp; Poise”</span>
+        </div>
+        <div class="flex items-center gap-14 pr-14" aria-hidden="true">
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Where Extraordinary Flavor Becomes Pure Art”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Elegance Served on Every Silver Platter”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “A Symphony of Taste Crafted for the Senses”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Unrivaled Hospitality, Unforgettable Dining”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Where Every Bite Feels Like a Celebration”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Refined Presentation, Soulful Perfection”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Curated Flavors That Linger in Memory”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Graceful Service &amp; Culinary Mastery”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “The Art of Gathering Around Fine Food”</span>
+          <span class="flex items-center gap-3"><em class="text-luxe-champagne not-italic">✦</em> “Pure Gastronomy, Served with Heart &amp; Poise”</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services & Attributes -->
+  <section id="about" class="py-24 relative overflow-hidden side-shade-light">
+    <div class="absolute top-12 -left-24 w-80 h-80 bg-luxe-sage/12 rounded-full blur-3xl pointer-events-none animate-float-slow"></div>
+    <div class="absolute bottom-12 -right-24 w-96 h-96 bg-luxe-champagne/12 rounded-full blur-3xl pointer-events-none animate-float-delayed"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <span class="gold-ornament text-luxe-sage font-semibold uppercase tracking-[0.24em] text-[11px]">The Orozco Standard</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold text-luxe-emerald mt-3">Culinary Craft &amp; Botanical Styling</h2>
+        <p class="text-stone-500 text-sm mt-3 leading-relaxed">Every celebration is tailored with generous portions, punctual white-glove delivery, and warm Latin hospitality.</p>
+      </div>
+      <div id="services-grid" class="grid md:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- Interactive Occasion & Tasting Mood Curator -->
+  <section id="curator" class="py-20 bg-luxe-emerald text-white relative overflow-hidden border-y border-luxe-champagne/25 side-shade-dark">
+    <div class="absolute inset-0 botanical-grid opacity-50 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(4,14,10,0.75)_100%)] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="reveal text-center max-w-2xl mx-auto mb-12">
+        <span class="text-luxe-champagne font-semibold uppercase tracking-[0.24em] text-[11px]">Interactive Experience</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold mt-2">Curate Your Celebration Mood</h2>
+        <p class="text-luxe-mist/75 text-sm mt-2">Select an occasion style below to preview Orozco's recommended pairing &amp; styling palette.</p>
+      </div>
+
+      <div id="mood-tabs" class="reveal flex flex-wrap justify-center gap-3 mb-10"></div>
+      <div id="mood-display" class="reveal-zoom luxe-glass-dark rounded-3xl p-8 sm:p-10 grid lg:grid-cols-12 gap-8 items-center"></div>
+    </div>
+  </section>
+
+  <!-- Interactive Menu & Most Liked Dishes -->
+  <section id="menu" class="py-24 bg-luxe-ivory border-b border-luxe-sage/15 relative side-shade-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-luxe-sage font-semibold uppercase tracking-[0.24em] text-[11px]">Curated Selections</span>
+          <h2 class="font-display text-4xl sm:text-5xl font-semibold text-luxe-emerald mt-2">Most Liked Dishes &amp; Live Stations</h2>
+          <p class="text-stone-600 text-sm mt-2">
+            Move your cursor near any dish portrait and <span class="text-luxe-emerald font-semibold underline decoration-luxe-champagne decoration-2 underline-offset-4">scroll on the image</span> to inspect chef preparation notes.
+          </p>
+        </div>
+        <div id="category-filters" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- Verified Customer Reviews -->
+  <section id="reviews" class="py-24 relative overflow-hidden side-shade-light">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[42rem] h-[42rem] bg-luxe-mist/50 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="reveal text-center max-w-2xl mx-auto mb-16">
+        <span class="gold-ornament text-luxe-sage font-semibold uppercase tracking-[0.24em] text-[11px]">Guest Acclaim</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold text-luxe-emerald mt-3">Words From Our Hosts</h2>
+      </div>
+      <div id="reviews-grid" class="grid md:grid-cols-3 gap-8"></div>
+    </div>
+  </section>
+
+  <!-- Interactive Quote Builder & Contact -->
+  <section id="quote" class="py-24 bg-luxe-emerald text-white overflow-hidden relative side-shade-dark">
+    <div class="absolute inset-0 botanical-grid opacity-60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(4,14,10,0.75)_100%)] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 relative z-10">
+      <div id="contact" class="reveal-left lg:col-span-5 space-y-6">
+        <span class="text-luxe-champagne font-semibold uppercase tracking-[0.24em] text-[11px]">Private Event Concierge</span>
+        <h2 class="font-display text-4xl sm:text-5xl font-semibold leading-tight">Design Your Celebration Menu</h2>
+        <p class="text-luxe-mist/80 leading-relaxed text-sm sm:text-base">
+          Proudly serving Miami, Pembroke Pines, and South Florida with bespoke catering packages, live pasta stations, and full event decor.
+        </p>
+        <div id="contact-details" class="space-y-4 pt-3 text-luxe-mist/90 text-sm border-t border-luxe-champagne/20"></div>
+      </div>
+
+      <div class="reveal-right lg:col-span-7 luxe-glass-dark p-8 sm:p-10 rounded-3xl">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="font-display text-3xl font-semibold text-white">Request a Bespoke Proposal</h3>
+          <span class="text-xs text-luxe-champagne uppercase tracking-widest hidden sm:inline">Database Synced</span>
+        </div>
+        <form id="quote-form" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[11px] uppercase tracking-[0.16em] text-luxe-goldLight mb-1.5">Host Name *</label>
+              <input type="text" required id="cust-name" placeholder="Maria Rodriguez" class="w-full bg-luxe-emerald/90 border border-luxe-champagne/25 rounded-xl px-4 py-3 text-white placeholder-luxe-mist/35 focus:outline-none focus:border-luxe-champagne transition" />
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-[0.16em] text-luxe-goldLight mb-1.5">Phone / SMS *</label>
+              <input type="tel" required id="cust-phone" placeholder="(305) 555-0199" class="w-full bg-luxe-emerald/90 border border-luxe-champagne/25 rounded-xl px-4 py-3 text-white placeholder-luxe-mist/35 focus:outline-none focus:border-luxe-champagne transition" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[11px] uppercase tracking-[0.16em] text-luxe-goldLight mb-1.5">Occasion</label>
+              <select id="event-type" class="w-full bg-luxe-emerald/90 border border-luxe-champagne/25 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxe-champagne transition">
+                <option>Wedding / Gala Reception</option>
+                <option>Gender Reveal / Milestone Party</option>
+                <option>Executive / Corporate Luncheon</option>
+                <option>Private Family Gathering</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] uppercase tracking-[0.16em] text-luxe-goldLight mb-1.5">Estimated Guests</label>
+              <input type="number" id="guest-count" min="5" value="40" class="w-full bg-luxe-emerald/90 border border-luxe-champagne/25 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-luxe-champagne transition" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] uppercase tracking-[0.16em] text-luxe-goldLight mb-1.5">Selected Dishes &amp; Styling Preferences</label>
+            <textarea id="selected-items-box" rows="3" placeholder="Select '+ Add to Proposal' on any dish above, or share your vision..." class="w-full bg-luxe-emerald/90 border border-luxe-champagne/25 rounded-xl px-4 py-3 text-white placeholder-luxe-mist/35 focus:outline-none focus:border-luxe-champagne transition"></textarea>
+          </div>
+          <button type="submit" class="btn-shimmer w-full bg-gradient-to-r from-luxe-champagne via-[#DFBC6D] to-luxe-goldLight hover:brightness-105 text-luxe-emerald font-bold uppercase tracking-[0.18em] text-xs py-4 rounded-xl transition shadow-xl hover:scale-[1.01] active:scale-[0.99]">
+            Submit Catering Inquiry (Save to Database)
+          </button>
+          <p id="form-feedback" class="text-sm text-emerald-300 hidden pt-2"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#05110B] text-luxe-mist/60 py-12 text-center text-xs border-t border-luxe-champagne/15 space-y-3">
+    <p class="font-display text-xl text-white tracking-[0.2em]">OROZCO'S LATIN CUISINE</p>
+    <div class="flex flex-wrap items-center justify-center gap-6 text-[11px] uppercase tracking-wider text-luxe-mist">
+      <a href="javascript:toggleTermsModal(true, 'terms')" class="hover:text-luxe-champagne transition">Terms of Service</a>
+      <a href="javascript:toggleTermsModal(true, 'general')" class="hover:text-luxe-champagne transition">General Tab</a>
+      <a href="javascript:toggleTermsModal(true, 'privacy')" class="hover:text-luxe-champagne transition">Privacy Policy</a>
+      <a href="javascript:viewDatabaseLogs()" class="hover:text-luxe-champagne transition">Database Logs</a>
+      <a href="javascript:resetCookieGate()" class="hover:text-luxe-champagne transition">Reset Cookie Gate</a>
+    </div>
+    <p>&copy; <span id="year"></span> Pembroke Rd, Pembroke Pines &bull; Greater Miami, FL &bull; All Rights Reserved.</p>
+  </footer>
+
+  <!-- EMBEDDED STRUCTURED DATABASE & MODAL ENGINE -->
+  <script>
+    const RESTAURANT_DB = {
+      profile: {
+        name: "Orozco's Latin Cuisine",
+        tagline: "Authentic Latin Catering & Event Styling",
+        address: "Pembroke Rd, Pembroke Pines, FL 33025 (Serving Greater Miami & Broward)",
+        phone: "+1 (954) 401-8518",
+        phoneRaw: "+19544018518",
+        website: "orozcoslatincuisine.com",
+        rating: "5.0 / 5.0",
+        reviewCount: 18,
+        hours: [
+          { days: "Monday – Saturday", time: "9:00 AM – 6:00 PM" },
+          { days: "Sunday", time: "Closed (Private Events by Request)" }
+        ],
+        attributes: [
+          "White-Glove Delivery & Takeout",
+          "Bespoke Event Decor & Styling",
+          "Wheelchair Accessible Venue Access",
+          "Cards, Debit & Direct SMS Concierge"
+        ]
+      },
+      services: [
+        {
+          title: "Bespoke Event Catering",
+          number: "01",
+          tag: "Signature Hospitality",
+          description: "Tailored Latin menus for weddings, gender reveals, and executive luncheons with generous portions and punctual delivery."
+        },
+        {
+          title: "Interactive Live Stations",
+          number: "02",
+          tag: "Guest Favorite",
+          description: "Guest-favorite live culinary stations—highlighted by our signature customizable Pasta Station with gourmet toppings."
+        },
+        {
+          title: "Botanical & Table Styling",
+          number: "03",
+          tag: "Visual Artistry",
+          description: "Refined presentation and curated event decorations that elevate your gathering with warm, family-style Latin hospitality."
+        }
+      ],
+      moods: [
+        {
+          id: "gala",
+          label: "Grand Wedding & Gala",
+          subtitle: "Candlelit Emerald & Champagne Elegance",
+          description: "Designed for milestone receptions where presentation matters as much as flavor. Features passed artisanal empanadas, a chef-attended live pasta bar, and full table styling.",
+          highlights: ["Live Custom Pasta Station", "Citrus-Marinated Pollo & Churrasco", "Full Botanical Table Decor"],
+          image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=900&q=85",
+          presetPackage: "Complete Celebration & Decor Suite"
+        },
+        {
+          id: "fiesta",
+          label: "Gender Reveal & Family Fiesta",
+          subtitle: "Abundant Latin Feast & Warmth",
+          description: "Generous family-style platters crafted so every guest feels treated like family—complete with custom theme accents and effortless setup.",
+          highlights: ["Traditional Latin Feast Platter", "Artisanal Empanadas & Croquetas", "Yuca con Mojo & Tostones"],
+          image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=85",
+          presetPackage: "Traditional Latin Feast Platter"
+        },
+        {
+          id: "executive",
+          label: "Executive & Corporate Table",
+          subtitle: "Punctual, Polished & Energizing",
+          description: "Impress clients and teams across Miami & Broward with on-time white-glove delivery, warm chafing presentation, and crowd-pleasing Latin classics.",
+          highlights: ["Custom Interactive Pasta Station", "Citrus-Marinated Pollo & Churrasco", "Individually Labeled Serving Displays"],
+          image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=85",
+          presetPackage: "Custom Interactive Pasta Station"
+        }
+      ],
+      menu: [
+        {
+          id: 1,
+          category: "Signature Stations",
+          name: "Custom Interactive Pasta Station",
+          badge: "✦ #1 Guest Favorite",
+          image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Tossed live to order with garlic-herb olive oil, velvety Alfredo or pomodoro, grilled chicken, shrimp, sun-dried tomatoes & aged Parmesan.",
+          description: "Freshly prepared pasta tossed to order with your choice of sauces, proteins, cheeses, and an abundant selection of toppings.",
+          servingNote: "Per Guest / Live Station"
+        },
+        {
+          id: 2,
+          category: "Latin Classics",
+          name: "Traditional Latin Feast Platter",
+          badge: "Most Requested",
+          image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Slow-marinated overnight in citrus mojo, accompanied by saffron yellow rice, slow-simmered black beans & caramelized sweet maduros.",
+          description: "Slow-roasted seasoned meats paired with fragrant yellow rice, savory black or red beans, and sweet fried plantains.",
+          servingNote: "Half & Full Catering Trays"
+        },
+        {
+          id: 3,
+          category: "Appetizers & Bites",
+          name: "Artisanal Empanadas & Croquetas",
+          badge: "Cocktail Hour",
+          image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Hand-crimped golden pastry filled with spiced picadillo beef or shredded chicken, paired with house cilantro-garlic crema.",
+          description: "Golden, flaky pastries stuffed with seasoned beef, shredded chicken, or melted cheese, served with house cilantro-garlic sauce.",
+          servingNote: "Platters of 25 / 50 / 100"
+        },
+        {
+          id: 4,
+          category: "Latin Classics",
+          name: "Citrus-Marinated Pollo & Churrasco",
+          badge: "Chef's Reserve",
+          image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Flame-seared skirt steak & tender chicken breast finished with fresh herb chimichurri and confit garlic.",
+          description: "Tender grilled chicken breast and juicy skirt steak marinated in traditional Latin mojo and topped with fresh chimichurri.",
+          servingNote: "Half & Full Catering Trays"
+        },
+        {
+          id: 5,
+          category: "Sides & Accompaniments",
+          name: "Yuca con Mojo & Tostones",
+          badge: "Heirloom Side",
+          image: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Fork-tender cassava bathed in warm sour-orange & sautéed onion mojo beside crisp double-fried green plantains.",
+          description: "Boiled cassava drizzled with warm garlic-citrus oil alongside twice-fried crispy green plantains.",
+          servingNote: "Catering Tray"
+        },
+        {
+          id: 6,
+          category: "Event Packages",
+          name: "Complete Celebration & Decor Suite",
+          badge: "Full Atelier",
+          image: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=900&q=85",
+          chefNote: "Includes custom table styling, chafing displays, botanical accents, appetizer reception, two entrees & three signature sides.",
+          description: "Includes appetizer reception, two main entrees, three traditional sides, setup, and custom table decorations.",
+          servingNote: "Bespoke Proposal"
+        }
+      ],
+      reviews: [
+        {
+          author: "Verified Catering Host",
+          event: "Wedding & Gala Luncheon",
+          rating: 5,
+          text: "If you love food and want to create an unforgettable dining experience for your party, wedding, or any event, hands down, Orozco's Latin Cuisine is the best choice. Passionate, fabulous service & tasty food, generous price, on time delivery."
+        },
+        {
+          author: "Verified Family Host",
+          event: "Gender Reveal Celebration",
+          rating: 5,
+          text: "If there was a rating higher than 5 stars, I would post it. Orozco's Latin Cuisine catered our daughter's gender reveal party and they were amazing! The food was incredible and they treated us like family."
+        },
+        {
+          author: "Verified Event Guest",
+          event: "Private Soirée",
+          rating: 5,
+          text: "They have great food. My personal favorite is the pasta station for the many toppings to choose from. Their decorations are beautiful and prices are great."
+        }
+      ]
+    };
+
+    let selectedItems = [];
+
+    // --- COOKIE HELPER FUNCTIONS ---
+    function setCookie(name, value, days) {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/; SameSite=Lax";
+    }
+
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      }
+      return null;
+    }
+
+    // --- FIRST-TIME VISITOR COOKIE GATE LOGIC ---
+    function checkFirstTimeCookieGate() {
+      const status = getCookie('orozco_cookie_consent_status');
+      const gateModal = document.getElementById('cookie-gate-modal');
+      if (!status) {
+        gateModal.classList.remove('opacity-0', 'pointer-events-none');
+        gateModal.classList.add('opacity-100');
+      }
+    }
+
+    function handleCookieChoice(accepted) {
+      setCookie('orozco_cookie_consent_status', accepted ? 'accepted' : 'declined', 365);
+      const gateModal = document.getElementById('cookie-gate-modal');
+      gateModal.classList.remove('opacity-100');
+      gateModal.classList.add('opacity-0', 'pointer-events-none');
+      showToast(accepted ? 'Cookies accepted. Welcome!' : 'Optional cookies declined.');
+    }
+
+    function resetCookieGate() {
+      setCookie('orozco_cookie_consent_status', '', -1);
+      location.reload();
+    }
+
+    // --- GENERIC PLACEHOLDER TERMS & GENERAL TAB CONTENT ---
+    const TERMS_CONTENT = {
+      terms: `
+        <h4 class="font-display text-xl text-luxe-champagne font-semibold mb-2">Terms of Service</h4>
+        <p>1. <strong>Agreement Overview:</strong> These Terms of Service govern your access to and use of this website, platform, and related services. By accessing or using the service, you agree to be bound by these terms.</p>
+        <p class="mt-2">2. <strong>User Accounts &amp; Conduct:</strong> Users are responsible for maintaining the confidentiality of their session details and agree to utilize the platform in a lawful, respectful manner without disrupting system operations.</p>
+        <p class="mt-2">3. <strong>Intellectual Property Rights:</strong> All visual content, source code, text formatting, and graphic layouts are protected under applicable intellectual property laws and remain the property of their respective creators.</p>
+        <p class="mt-2">4. <strong>Modifications to Service:</strong> We reserve the right to modify, suspend, or discontinue any portion of the platform at any time without prior notice or liability.</p>
+      `,
+      general: `
+        <h4 class="font-display text-xl text-luxe-champagne font-semibold mb-2">General Conditions &amp; Overview</h4>
+        <p>1. <strong>General Scope:</strong> This section establishes the general operational guidelines, disclaimers, and governing standards for all visitors and interacting parties.</p>
+        <p class="mt-2">2. <strong>Limitation of Liability:</strong> The platform and its features are provided on an "as is" and "as available" basis without warranties of any kind, either express or implied.</p>
+        <p class="mt-2">3. <strong>Third-Party Links &amp; Resources:</strong> Our interface may incorporate links to external websites or resources. We assume no responsibility or liability for the content, privacy policies, or practices of any third-party sites.</p>
+        <p class="mt-2">4. <strong>Updates &amp; Revisions:</strong> These general conditions may be updated periodically. Continued use of the platform constitutes your acknowledgment and acceptance of any revised clauses.</p>
+      `,
+      privacy: `
+        <h4 class="font-display text-xl text-luxe-champagne font-semibold mb-2">Privacy Policy</h4>
+        <p>1. <strong>Information Collection:</strong> We collect information you explicitly provide when submitting inquiries, filling out forms, or saving preferences to your browser session.</p>
+        <p class="mt-2">2. <strong>Data Security:</strong> We implement standard security measures to maintain the safety of your personal information stored in browser sessions or local database records.</p>
+        <p class="mt-2">3. <strong>User Rights:</strong> You retain full rights to request deletion or modification of your stored data records at any time by clearing browser cookies or contacting support.</p>
+      `,
+      cookies: `
+        <h4 class="font-display text-xl text-luxe-champagne font-semibold mb-2">Cookie Policy</h4>
+        <p>1. <strong>What Are Cookies:</strong> Cookies are small text files placed on your device to help the website provide a better user experience, remember preferences, and maintain session data.</p>
+        <p class="mt-2">2. <strong>Consent &amp; Control:</strong> You can manage or revoke your cookie consent preferences at any time using our first-time gate or footer controls.</p>
+      `
+    };
+
+    function toggleTermsModal(open, defaultTab = 'terms') {
+      const modal = document.getElementById('terms-modal');
+      if (open) {
+        switchTermsTab(defaultTab);
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100');
+      } else {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function switchTermsTab(tabKey) {
+      document.querySelectorAll('.terms-tab-btn').forEach(btn => {
+        btn.className = 'terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-forest/80 text-luxe-mist hover:text-white transition';
+      });
+      const activeBtn = document.getElementById(`tab-btn-${tabKey}`);
+      if (activeBtn) {
+        activeBtn.className = 'terms-tab-btn px-4 py-2 rounded-xl text-xs uppercase tracking-wider font-semibold bg-luxe-champagne text-luxe-emerald transition shadow-md';
+      }
+      document.getElementById('terms-content-box').innerHTML = TERMS_CONTENT[tabKey] || TERMS_CONTENT['terms'];
+    }
+
+    // --- DATABASE & PROPOSAL TRAY LOGIC ---
+    function loadProposalFromCookies() {
+      const saved = getCookie('orozco_proposal_cart');
+      if (saved) {
+        try {
+          selectedItems = JSON.parse(saved);
+          if (selectedItems.length > 0) {
+            updateProposalUI();
+          }
+        } catch (e) {
+          selectedItems = [];
+        }
+      }
+    }
+
+    function saveProposalToCookies() {
+      setCookie('orozco_proposal_cart', JSON.stringify(selectedItems), 7);
+    }
+
+    function updateProposalUI() {
+      const box = document.getElementById('selected-items-box');
+      if (box) {
+        box.value = "Selected Menu Items:\n• " + selectedItems.join("\n• ");
+      }
+      const pill = document.getElementById('floating-proposal-pill');
+      const badge = document.getElementById('proposal-count-badge');
+      if (badge && pill) {
+        badge.textContent = selectedItems.length;
+        if (selectedItems.length > 0) {
+          pill.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        } else {
+          pill.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }
+      }
+    }
+
+    function viewDatabaseLogs() {
+      const dbRecords = JSON.parse(localStorage.getItem('orozcos_database_records') || '[]');
+      console.log("--- OROZCO'S CATERING DATABASE RECORDS ---", dbRecords);
+      alert(`Database Status: ${dbRecords.length} proposal inquiry record(s) stored locally in browser database. Check console for full dump.`);
+    }
+
+    // IntersectionObserver for reveals & counters
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          entry.target.querySelectorAll('.count-up').forEach(counter => {
+            if (!counter.dataset.animated) {
+              counter.dataset.animated = 'true';
+              animateCounter(counter);
+            }
+          });
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -35px 0px'
+    });
+
+    function animateCounter(el) {
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const duration = 1400;
+      const startTime = performance.now();
+
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    function observeReveals() {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-zoom').forEach(el => {
+        revealObserver.observe(el);
+      });
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const banner = document.getElementById('toast-banner');
+      document.getElementById('toast-message').textContent = msg;
+      banner.classList.remove('translate-x-full', 'opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        banner.classList.add('translate-x-full', 'opacity-0');
+      }, 3200);
+    }
+
+    function renderMood(moodId) {
+      const mood = RESTAURANT_DB.moods.find(m => m.id === moodId) || RESTAURANT_DB.moods[0];
+
+      document.querySelectorAll('.mood-tab-btn').forEach(btn => {
+        const active = btn.dataset.mood === mood.id;
+        btn.className = active
+          ? 'mood-tab-btn px-6 py-3 rounded-full text-xs uppercase tracking-[0.16em] font-bold bg-gradient-to-r from-luxe-champagne to-luxe-goldLight text-luxe-emerald shadow-lg transition'
+          : 'mood-tab-btn px-6 py-3 rounded-full text-xs uppercase tracking-[0.16em] font-semibold bg-luxe-forest/80 text-luxe-mist border border-luxe-champagne/25 hover:border-luxe-champagne transition';
+      });
+
+      const display = document.getElementById('mood-display');
+      display.style.opacity = '0.35';
+      setTimeout(() => {
+        display.innerHTML = `
+          <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-luxe-champagne/30 h-64 sm:h-72 relative group">
+            <img src="${mood.image}" alt="${mood.label}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-luxe-emerald/80 via-transparent to-transparent"></div>
+            <span class="absolute bottom-3 left-4 text-[11px] uppercase tracking-widest text-luxe-goldLight font-semibold">✦ Curated Pairing</span>
+          </div>
+          <div class="lg:col-span-7 space-y-5">
+            <span class="text-xs uppercase tracking-[0.22em] text-luxe-champagne font-semibold">${mood.subtitle}</span>
+            <h3 class="font-display text-3xl sm:text-4xl font-semibold text-white">${mood.label}</h3>
+            <p class="text-luxe-mist/85 text-sm sm:text-base leading-relaxed">${mood.description}</p>
+            <div class="flex flex-wrap gap-2.5 pt-1">
+              ${mood.highlights.map(h => `<span class="text-xs bg-luxe-emerald/90 border border-luxe-champagne/30 text-luxe-goldLight px-3.5 py-1.5 rounded-full">✓ ${h}</span>`).join('')}
+            </div>
+            <div class="pt-3">
+              <button onclick="addToQuote('${mood.presetPackage.replace(/'/g, "\\'")}')" class="btn-shimmer bg-white hover:bg-luxe-ivory text-luxe-emerald font-bold text-xs uppercase tracking-[0.16em] px-6 py-3.5 rounded-full transition shadow-lg">
+                + Add "${mood.presetPackage}" to Proposal
+              </button>
+            </div>
+          </div>
+        `;
+        display.style.opacity = '1';
+      }, 140);
+    }
+
+    function attachImageScrollInteractions() {
+      const stages = document.querySelectorAll('.dish-image-stage');
+
+      document.addEventListener('mousemove', (e) => {
+        stages.forEach(stage => {
+          const rect = stage.getBoundingClientRect();
+          const buffer = 80;
+          const isClose =
+            e.clientX >= rect.left - buffer &&
+            e.clientX <= rect.right + buffer &&
+            e.clientY >= rect.top - buffer &&
+            e.clientY <= rect.bottom + buffer;
+
+          if (isClose) {
+            stage.classList.add('is-near');
+          } else {
+            stage.classList.remove('is-near');
+          }
+        });
+      }, { passive: true });
+
+      stages.forEach(stage => {
+        let progress = 0;
+        const img = stage.querySelector('img');
+        const chefOverlay = stage.querySelector('.chef-scroll-overlay');
+        const progressFill = stage.querySelector('.image-scroll-fill');
+        const hintText = stage.querySelector('.hint-label');
+
+        function applyImageAnimation(val) {
+          progress = Math.max(0, Math.min(1, val));
+          const scale = 1 + progress * 0.28;
+          const translateY = progress * -14;
+          const rotate = progress * 1.4;
+          img.style.transform = `scale(${scale.toFixed(3)}) translateY(${translateY.toFixed(1)}px) rotate(${rotate.toFixed(2)}deg)`;
+
+          if (progressFill) progressFill.style.width = `${Math.round(progress * 100)}%`;
+
+          if (chefOverlay) {
+            chefOverlay.style.opacity = progress > 0.18 ? Math.min(1, (progress - 0.18) * 1.4) : 0;
+            chefOverlay.style.transform = `translateY(${(1 - progress) * 16}px)`;
+          }
+
+          if (hintText) {
+            if (progress >= 0.95) {
+              hintText.textContent = 'Scroll up to zoom out';
+            } else if (progress > 0.05) {
+              hintText.textContent = `Inspecting ${Math.round(progress * 100)}% • Scroll`;
+            } else {
+              hintText.textContent = 'Scroll on image to explore';
+            }
+          }
+        }
+
+        stage.addEventListener('wheel', (e) => {
+          const scrollingDown = e.deltaY > 0;
+          const scrollingUp = e.deltaY < 0;
+
+          if ((scrollingDown && progress < 1) || (scrollingUp && progress > 0)) {
+            e.preventDefault();
+            const delta = e.deltaY * 0.0018;
+            applyImageAnimation(progress + delta);
+          }
+        }, { passive: false });
+      });
+    }
+
+    function initScrollMechanics() {
+      const progressBar = document.getElementById('scroll-progress');
+      const navbar = document.getElementById('navbar');
+      const navInner = document.getElementById('nav-inner');
+      const heroPattern = document.getElementById('hero-pattern');
+      const heroGlow = document.getElementById('hero-glow');
+      const heroCard = document.getElementById('hero-card');
+
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? scrollY / docHeight : 0;
+
+        progressBar.style.transform = `scaleX(${progress})`;
+
+        if (scrollY > 50) {
+          navbar.classList.add('bg-luxe-emerald/98', 'shadow-2xl');
+          navInner.classList.replace('py-4', 'py-2.5');
+        } else {
+          navbar.classList.remove('bg-luxe-emerald/98', 'shadow-2xl');
+          navInner.classList.replace('py-2.5', 'py-4');
+        }
+
+        if (scrollY < 900) {
+          heroPattern.style.transform = `translateY(${scrollY * 0.22}px)`;
+          heroGlow.style.transform = `translate(${-scrollY * 0.14}px, ${scrollY * 0.18}px)`;
+          if (heroCard.classList.contains('is-visible')) {
+            heroCard.style.transform = `translateY(${scrollY * -0.05}px)`;
+          }
+        }
+      }, { passive: true });
+    }
+
+    function initApp() {
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const quickInfo = document.getElementById('business-quick-info');
+      quickInfo.innerHTML = `
+        <div class="flex items-start gap-3">
+          <span class="text-luxe-champagne mt-0.5">✦</span>
+          <div><strong class="text-white block text-xs uppercase tracking-wider">Service Area</strong> ${RESTAURANT_DB.profile.address}</div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-luxe-champagne mt-0.5">✦</span>
+          <div><strong class="text-white block text-xs uppercase tracking-wider">Direct Line &amp; SMS</strong> <a href="tel:${RESTAURANT_DB.profile.phoneRaw}" class="text-luxe-goldLight hover:underline font-medium">${RESTAURANT_DB.profile.phone}</a></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <span class="text-luxe-champagne mt-0.5">✦</span>
+          <div>
+            <strong class="text-white block text-xs uppercase tracking-wider">Atelier Hours</strong>
+            ${RESTAURANT_DB.profile.hours.map(h => `<div>${h.days}: <span class="text-luxe-goldLight">${h.time}</span></div>`).join('')}
+          </div>
+        </div>
+        <div class="pt-4 border-t border-luxe-champagne/20 flex flex-wrap gap-2">
+          ${RESTAURANT_DB.profile.attributes.map(attr => `<span class="text-[11px] bg-luxe-emerald/90 border border-luxe-champagne/25 text-luxe-mist px-3 py-1 rounded-full">${attr}</span>`).join('')}
+        </div>
+      `;
+
+      const servicesGrid = document.getElementById('services-grid');
+      servicesGrid.innerHTML = RESTAURANT_DB.services.map((s, idx) => `
+        <div class="reveal luxe-card-light p-9 rounded-3xl relative overflow-hidden group" style="transition-delay: ${idx * 140}ms;">
+          <div class="flex items-center justify-between mb-6">
+            <span class="font-display italic text-3xl text-luxe-champagne font-semibold">${s.number}</span>
+            <span class="text-[10px] uppercase tracking-[0.2em] text-luxe-sage font-semibold bg-luxe-mist/70 px-3 py-1 rounded-full">${s.tag}</span>
+          </div>
+          <h3 class="font-display text-2xl font-semibold text-luxe-emerald mb-3">${s.title}</h3>
+          <p class="text-stone-600 text-sm leading-relaxed mb-6">${s.description}</p>
+          <div class="h-[1px] bg-gradient-to-r from-luxe-champagne/70 to-transparent draw-line"></div>
+        </div>
+      `).join('');
+
+      document.getElementById('mood-tabs').innerHTML = RESTAURANT_DB.moods.map(m => `
+        <button data-mood="${m.id}" onclick="renderMood('${m.id}')" class="mood-tab-btn">${m.label}</button>
+      `).join('');
+      renderMood('gala');
+
+      const categories = ['All', ...new Set(RESTAURANT_DB.menu.map(item => item.category))];
+      const filterContainer = document.getElementById('category-filters');
+      filterContainer.innerHTML = categories.map((cat, idx) => `
+        <button onclick="filterMenu('${cat}', this)" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold transition ${idx === 0 ? 'bg-luxe-emerald text-white shadow-md' : 'bg-white text-luxe-emerald border border-luxe-sage/20 hover:border-luxe-champagne'}">
+          ${cat}
+        </button>
+      `).join('');
+
+      renderMenu('All');
+
+      const reviewsGrid = document.getElementById('reviews-grid');
+      reviewsGrid.innerHTML = RESTAURANT_DB.reviews.map((r, idx) => `
+        <div class="reveal luxe-card-light p-8 rounded-3xl flex flex-col justify-between" style="transition-delay: ${idx * 150}ms;">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-luxe-champagne text-sm tracking-widest">${'★'.repeat(r.rating)}</span>
+              <span class="font-display italic text-4xl text-luxe-sage/25 leading-none">”</span>
+            </div>
+            <p class="text-stone-700 text-sm italic leading-relaxed mb-6">"${r.text}"</p>
+          </div>
+          <div class="border-t border-luxe-mist pt-4 flex items-center justify-between">
+            <div>
+              <div class="font-semibold text-luxe-emerald text-sm">${r.author}</div>
+              <div class="text-xs text-luxe-sage">${r.event}</div>
+            </div>
+            <span class="text-[10px] uppercase tracking-widest text-luxe-champagne font-bold">Verified</span>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('contact-details').innerHTML = `
+        <p><strong class="text-luxe-goldLight uppercase text-xs tracking-wider block">Location</strong> ${RESTAURANT_DB.profile.address}</p>
+        <p><strong class="text-luxe-goldLight uppercase text-xs tracking-wider block">Telephone &amp; SMS</strong> ${RESTAURANT_DB.profile.phone}</p>
+        <p><strong class="text-luxe-goldLight uppercase text-xs tracking-wider block">Hours</strong> Mon–Sat 9:00 AM – 6:00 PM (Sun Private Events)</p>
+      `;
+
+      loadProposalFromCookies();
+      checkFirstTimeCookieGate();
+      observeReveals();
+      initScrollMechanics();
+    }
+
+    function filterMenu(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-luxe-emerald', 'text-white', 'shadow-md');
+        b.classList.add('bg-white', 'text-luxe-emerald', 'border', 'border-luxe-sage/20');
+      });
+      btn.classList.remove('bg-white', 'text-luxe-emerald', 'border', 'border-luxe-sage/20');
+      btn.classList.add('bg-luxe-emerald', 'text-white', 'shadow-md');
+      renderMenu(category);
+    }
+
+    function renderMenu(category) {
+      const items = category === 'All'
+        ? RESTAURANT_DB.menu
+        : RESTAURANT_DB.menu.filter(i => i.category === category);
+
+      document.getElementById('menu-grid').innerHTML = items.map((item, idx) => `
+        <div class="reveal luxe-card-light rounded-3xl overflow-hidden flex flex-col justify-between" style="transition-delay: ${idx * 95}ms;">
+          <div>
+            <div class="dish-image-stage h-60 w-full bg-luxe-emerald">
+              <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2 pointer-events-none">
+                <span class="text-[10px] font-bold uppercase tracking-[0.14em] text-luxe-emerald bg-white/95 backdrop-blur-md px-3 py-1 rounded-full shadow-sm border border-luxe-champagne/40">${item.badge}</span>
+                <span class="text-[10px] font-medium uppercase tracking-wider text-white bg-luxe-emerald/85 backdrop-blur-md px-3 py-1 rounded-full border border-white/15">${item.category}</span>
+              </div>
+              <div class="scroll-hint-badge absolute bottom-3.5 left-1/2 z-20 flex items-center gap-2 bg-luxe-emerald/95 backdrop-blur-md text-luxe-goldLight border border-luxe-champagne/50 px-3.5 py-1.5 rounded-full shadow-xl whitespace-nowrap">
+                <span class="w-3.5 h-5 rounded-full border border-luxe-champagne flex items-start justify-center p-0.5">
+                  <span class="wheel-dot w-1 h-1.5 bg-luxe-champagne rounded-full"></span>
+                </span>
+                <span class="hint-label text-[11px] font-medium tracking-wide">Scroll on image to explore</span>
+              </div>
+              <div class="chef-scroll-overlay opacity-0 absolute inset-0 bg-gradient-to-t from-luxe-emerald/95 via-luxe-emerald/65 to-transparent p-5 flex flex-col justify-end pointer-events-none transition-opacity duration-150">
+                <span class="text-[10px] uppercase tracking-[0.22em] text-luxe-champagne font-bold mb-1">Chef's Tasting Notes</span>
+                <p class="text-white text-xs leading-relaxed mb-7">${item.chefNote}</p>
+              </div>
+              <div class="absolute bottom-0 left-0 right-0 h-1 bg-black/30">
+                <div class="image-scroll-fill h-full bg-gradient-to-r from-luxe-champagne to-luxe-goldLight w-0 transition-all duration-75"></div>
+              </div>
+            </div>
+            <div class="p-7 pb-4">
+              <h3 class="font-display text-2xl font-semibold text-luxe-emerald mb-2">${item.name}</h3>
+              <p class="text-stone-600 text-sm leading-relaxed">${item.description}</p>
+            </div>
+          </div>
+          <div class="px-7 pb-7 pt-4 border-t border-luxe-mist flex items-center justify-between">
+            <span class="text-xs font-medium text-luxe-sage">${item.servingNote}</span>
+            <button onclick="addToQuote('${item.name.replace(/'/g, "\\'")}')" class="btn-shimmer text-[11px] uppercase tracking-wider font-bold bg-luxe-emerald hover:bg-luxe-forest text-white border border-luxe-champagne/40 px-4 py-2.5 rounded-full transition shadow-sm active:scale-95">
+              + Add to Proposal
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      observeReveals();
+      attachImageScrollInteractions();
+    }
+
+    function addToQuote(itemName) {
+      if (!selectedItems.includes(itemName)) {
+        selectedItems.push(itemName);
+        showToast(`Added "${itemName}" to your proposal tray.`);
+      } else {
+        showToast(`"${itemName}" is already in your proposal.`);
+      }
+
+      saveProposalToCookies();
+      updateProposalUI();
+    }
+
+    document.getElementById('quote-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const inquiryRecord = {
+        id: "ORZ-" + Date.now(),
+        name: document.getElementById('cust-name').value,
+        phone: document.getElementById('cust-phone').value,
+        eventType: document.getElementById('event-type').value,
+        guests: document.getElementById('guest-count').value,
+        notes: document.getElementById('selected-items-box').value,
+        status: "Confirmed & Logged to Database",
+        submittedAt: new Date().toISOString()
+      };
+
+      const dbRecords = JSON.parse(localStorage.getItem('orozcos_database_records') || '[]');
+      dbRecords.push(inquiryRecord);
+      localStorage.setItem('orozcos_database_records', JSON.stringify(dbRecords));
+
+      const feedback = document.getElementById('form-feedback');
+      feedback.textContent = `Success! Proposal ID ${inquiryRecord.id} saved to database. Our concierge will contact ${inquiryRecord.name} shortly.`;
+      feedback.classList.remove('hidden');
+      showToast('Proposal successfully saved to local database!');
+
+      this.reset();
+      selectedItems = [];
+      saveProposalToCookies();
+      updateProposalUI();
+    });
+
+    initApp();
+  </script>
+</body>
+</html>
